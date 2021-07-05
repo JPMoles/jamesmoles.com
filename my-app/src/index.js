@@ -106,11 +106,12 @@ class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
+        // let boldButtonText = {"font-weight": "bold"};
         const moves = history.map((step, move) => {
             const desc = move ? 'Go to move #' + move + ' col: ' + history[move].col + ' row: ' + history[move].row : 'Go to game start';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button style={setBoldButton()} onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
@@ -118,6 +119,8 @@ class Game extends React.Component {
         let status;
         if(winner) {
             status = 'Winner: ' + winner;
+        } else if (boardFilledNoWinner(current.squares)) { // Length 10 when index 9 is filled
+            status = 'No Winner!';
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
@@ -139,6 +142,11 @@ class Game extends React.Component {
     }
 }
 
+function setBoldButton(step, move) {
+    console.log("Step: " + step + " Move: " + move);
+    return {"font-weight": "bold"};
+}
+
 function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -157,6 +165,14 @@ function calculateWinner(squares) {
       }
     }
     return null;
+}
+
+function boardFilledNoWinner(squares) {
+    for(let i = 0; i < squares.length; i++) {
+        if(squares[i] === null)
+            return false;
+    }
+    return true;
 }
 
 // ========================================
