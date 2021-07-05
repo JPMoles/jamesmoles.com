@@ -70,6 +70,7 @@ class Game extends React.Component {
             }],
             stepNumber: 0,
             xIsNext: true,
+            buttonSelected: 0,
         };
     }
 
@@ -90,6 +91,7 @@ class Game extends React.Component {
             }]),
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
+            buttonSelected: this.state.buttonSelected+1,
         });
     }
 
@@ -97,7 +99,13 @@ class Game extends React.Component {
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) === 0,
+            buttonSelected: step,
         });
+    }
+
+    setBoldButton(move) {
+        // console.log("Step: " + step + " Move: " + move);
+        return this.state.buttonSelected === move ? {fontWeight: "bold"} : {fontWeight: "normal"};
     }
 
     render() {
@@ -111,7 +119,7 @@ class Game extends React.Component {
             const desc = move ? 'Go to move #' + move + ' col: ' + history[move].col + ' row: ' + history[move].row : 'Go to game start';
             return (
                 <li key={move}>
-                    <button style={setBoldButton()} onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button style={this.setBoldButton(move)} onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
@@ -140,11 +148,6 @@ class Game extends React.Component {
             </div>
         );
     }
-}
-
-function setBoldButton(step, move) {
-    console.log("Step: " + step + " Move: " + move);
-    return {"font-weight": "bold"};
 }
 
 function calculateWinner(squares) {
