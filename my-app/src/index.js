@@ -163,7 +163,7 @@ class Game extends React.Component {
                 <ol>{moves}</ol>
             </div>
             <div className="study-page">
-                <a href="study.html">Study page!</a>
+                <a href="../../study.html">Study page!</a>
             </div>
             </div>
         );
