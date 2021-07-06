@@ -4,7 +4,7 @@ import './index.css';
 
 function Square(props) {
     return (
-    <button className="square" onClick={props.onClick}>
+    <button className="square" onClick={props.onClick} style={{backgroundColor: props.winnerColor}}>
         {props.value}
     </button>
     );
@@ -16,6 +16,7 @@ class Board extends React.Component {
         return <Square 
             value={this.props.squares[i]} 
             onClick={() => this.props.onClick(i)} 
+            winnerColor={this.props.squareColors[i]}
             />;
     }
   
@@ -71,6 +72,7 @@ class Game extends React.Component {
             stepNumber: 0,
             xIsNext: true,
             buttonSelected: 0,
+            squareColors: [ "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff" ],
         };
     }
 
@@ -78,7 +80,17 @@ class Game extends React.Component {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
-        if(calculateWinner(squares) || squares[i]) {
+        let winner = calculateWinner(squares);
+        if(squares[i]) {
+            return;
+        } else if (winner) {
+            const colors = this.state.squareColors.slice();
+            colors[winner.finalSquares[0]] = "#8BFF00";
+            colors[winner.finalSquares[1]] = "#88FF00";
+            colors[winner.finalSquares[2]] = "#88FF00";
+            this.setState({
+                squareColors: colors,
+            });
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -112,6 +124,9 @@ class Game extends React.Component {
     
         const history = this.state.history;
         const current = history[this.state.stepNumber];
+
+        const colors = this.state.squareColors;
+
         const winner = calculateWinner(current.squares);
 
         // let boldButtonText = {"font-weight": "bold"};
@@ -126,7 +141,8 @@ class Game extends React.Component {
 
         let status;
         if(winner) {
-            status = 'Winner: ' + winner;
+            status = 'Winner: ' + winner.player;
+            console.log("winning squares: " + winner.finalSquares[0] + " " + winner.finalSquares[1] + " " + winner.finalSquares[2]);
         } else if (boardFilledNoWinner(current.squares)) { // Length 10 when index 9 is filled
             status = 'No Winner!';
         } else {
@@ -139,6 +155,7 @@ class Game extends React.Component {
                 <Board 
                     squares={current.squares}
                     onClick={(i) => this.handleClick(i)}
+                    squareColors={colors}
                 />
             </div>
             <div className="game-info">
@@ -164,7 +181,7 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return { player: squares[a], finalSquares: lines[i].slice() };
       }
     }
     return null;
