@@ -162,6 +162,9 @@ class Game extends React.Component {
                 <div>{status}</div>
                 <ol>{moves}</ol>
             </div>
+            <div className="study-page">
+                <a href="study.html">Study page!</a>
+            </div>
             </div>
         );
     }
@@ -203,5 +206,3 @@ ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
-
-ReactDOM.render(<a href="study.html">Study Page</a>, document.getElementById('root'));
