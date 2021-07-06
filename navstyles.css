@@ -27,9 +27,6 @@ header {
     text-decoration: none;
     font-size: 18px;
 }
-.navbar a:hover {
-    background-color: #76b5c5;
-}
 .github-container {
     float: right;
     margin-right: 50px;

@@ -196,8 +196,12 @@ function boardFilledNoWinner(squares) {
 }
 
 // ========================================
-  
+
+
+
 ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
+
+ReactDOM.render(<a href="study.html">Study Page</a>, document.getElementById('root'));
