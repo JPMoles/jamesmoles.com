@@ -81,19 +81,32 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         let winner = calculateWinner(squares);
-        if(squares[i]) {
+
+        if(squares[i] || winner) {
             return;
-        } else if (winner) {
+        }
+
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+        winner = calculateWinner(squares);
+        if(winner) {
             const colors = this.state.squareColors.slice();
             colors[winner.finalSquares[0]] = "#8BFF00";
             colors[winner.finalSquares[1]] = "#88FF00";
             colors[winner.finalSquares[2]] = "#88FF00";
             this.setState({
+                history: history.concat([{
+                    squares: squares,
+                    col: i % 3,
+                    row: Math.floor(i / 3),
+                }]),
+                stepNumber: history.length,
+                xIsNext: !this.state.xIsNext,
+                buttonSelected: this.state.buttonSelected+1,
                 squareColors: colors,
             });
             return;
         }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
 
         this.setState({
             history: history.concat([{
