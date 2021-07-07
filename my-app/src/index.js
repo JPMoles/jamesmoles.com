@@ -165,6 +165,7 @@ class Game extends React.Component {
             <div className="study-page">
                 <a href="https://www.jamesmoles.com/study.html">Study page!</a>
             </div>
+            <div id="test123"></div>
             </div>
         );
     }
@@ -206,3 +207,5 @@ ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
+
+ReactDOM.render(<button>Click Me!</button>, document.getElementById('test123'));
