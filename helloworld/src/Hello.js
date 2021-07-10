@@ -37,7 +37,7 @@ export function Hello(props) {
 class WelcomeMessage extends React.Component {
   render() {
     return (
-      <div class="WelcomeMessage">
+      <div className="WelcomeMessage">
         <h2>Welcome, {this.props.user}!</h2>
       </div>);
   }
@@ -54,7 +54,7 @@ export class WelcomeBoard extends React.Component {
     }
 
     return (
-        <div class="WelcomeBoard">
+        <div className="WelcomeBoard">
           {message}
         </div>
       );

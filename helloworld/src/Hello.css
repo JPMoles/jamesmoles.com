@@ -2,19 +2,21 @@
 .WelcomeMessage {
     border-radius: 25px;
     border-style: solid;
-    border-color: lightgrey;
+    border-color: white;
     text-align: center;
     padding-left: 1em;
     padding-right: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: 0.8em;
+    background-color: #f7f7f7;
 }
 
 .WelcomeMessage:hover {
-    background-color: #76b5c5;
+    background-color: #60d9fc;
 }
 
 .WelcomeMessage:active {
-    background-color: #abdbe3;
+    background-color: #4CB0CA;
+    color: ##F1f1f1;
 }
