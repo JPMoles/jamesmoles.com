@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.WelcomeBoard {
+  background-color: #1e81b0;
+  float: left;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 15px;
+}

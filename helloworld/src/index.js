@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { App, Test } from './App';
-import Hello from './Hello';
+import { Hello, WelcomeBoard } from './Hello';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -13,13 +13,18 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Hello />,
+  <Hello name='Trance' />,
   document.getElementById('hello-world')
 );
 
 ReactDOM.render(
   <Test />,
   document.getElementById('test')
+);
+
+ReactDOM.render(
+  <WelcomeBoard />,
+  document.getElementById('welcomeboard')
 );
 
 // If you want to start measuring performance in your app, pass a function
