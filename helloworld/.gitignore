@@ -12,11 +12,11 @@
 # /build
 
 # initial source
-/src
-/public
-/package-lock.json
-/package.json
-/README.md
+#/src
+#/public
+#/package-lock.json
+#/package.json
+#/README.md
 
 # misc
 .DS_Store
