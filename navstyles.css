@@ -4,8 +4,8 @@ body {
 header {
     background-color: #154c79;
 }
-footer {
-    
+header h1 {
+    color: white;
 }
 p {
     background-color: lightgray;
