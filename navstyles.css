@@ -5,7 +5,7 @@ header {
     background-color: #154c79;
 }
 footer {
-    background-color: DarkSalmon;
+    
 }
 p {
     background-color: lightgray;
@@ -30,4 +30,22 @@ header {
 .github-container {
     float: right;
     margin-right: 50px;
+}
+
+main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    display: block;
+    background-color: DarkSalmon;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
