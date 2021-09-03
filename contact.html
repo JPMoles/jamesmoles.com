@@ -46,9 +46,24 @@
     <main>
         <div class="main-content">
             <h2>Contact Me</h2>
-            <p>
-                Will be adding a message box to send a direct message to my email here.
-            </p>
+            <div class="contact-container">
+                <form action="https://formspree.io/f/xrgrrknn" method="POST">
+                    <div class="contact-name">
+                        <label for="firstName">First Name:</label>
+                        <input name="firstName" id="firstName" type="text" placeholder="Name">
+                    </div>
+                    <div class="contact-email">
+                        <label for="email">Email:</label>
+                        <input name="_replyto" id="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="contact-message">
+                        <label for="message">Message:</label>
+                        <input name="message" id="message" type="text" placeholder="Your message here...">
+                    </div>
+
+                    <input type="submit" value="Send Email"/>
+                </form>
+            </div>
         </div>
     </main>
 
