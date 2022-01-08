@@ -635,6 +635,10 @@ video {
   display: table;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-32 {
   width: 8rem;
 }
@@ -643,12 +647,20 @@ video {
   width: 12rem;
 }
 
+.w-60 {
+  width: 15rem;
+}
+
 .w-full {
   width: 100%;
 }
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .max-w-xl {
